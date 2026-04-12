@@ -289,3 +289,61 @@ button:focus {
   border-color: rgba(239, 68, 68, 0.2);
   color: var(--danger);
 }
+
+/*MOBILE RESPONSIVENESS */
+
+@media (max-width: 480px) {
+  body {
+    padding: 12px;
+    align-items: flex-start;
+  }
+
+  .todo-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* meta section */
+  .card-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  /* Make actions vertical */
+  .card-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Buttons full width*/
+  .card-actions button {
+    width: 100%;
+  }
+
+  /* Toggle full width */
+  .toggle-container {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  /* Prevent text overflow */
+  .task-title {
+    font-size: 1.05rem;
+  }
+
+  .task-desc {
+    font-size: 0.85rem;
+  }
+}
+ {
+  box-sizing: border-box;
+}
