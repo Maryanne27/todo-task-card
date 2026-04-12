@@ -16,23 +16,31 @@
   --shadow-hover: 0 18px 40px rgba(17, 24, 39, 0.12);
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  padding: 16px;
   font-family: system-ui, -apple-system, sans-serif;
 
   background: radial-gradient(circle at 10% 10%, #ffffff 0%, transparent 40%),
     radial-gradient(circle at 90% 20%, #e0e7ff 0%, transparent 45%),
     linear-gradient(180deg, var(--bg1), var(--bg2));
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
   color: var(--text);
 }
 
-/* CARD  */
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+/* CARD */
 .todo-card {
   width: min(100%, 440px);
   padding: 22px;
@@ -56,11 +64,6 @@ body {
 .todo-card:active {
   transform: scale(0.98);
 }
-
-.todo-card.completed .task-title {
-  transition: all 0.2s ease;
-}
-
 /* TITLE */
 .task-title {
   font-size: 1.2rem;
@@ -136,20 +139,11 @@ body {
   font-weight: 600;
 }
 
-.status.pending {
-  color: var(--accent);
-}
-
 .status.done {
   color: var(--success);
 }
 
 /* COMPLETED STATE */
-.todo-card.completed {
-  opacity: 0.92;
-  transform: scale(0.995);
-}
-
 .todo-card.completed .task-title {
   text-decoration: line-through;
   opacity: 0.55;
@@ -158,20 +152,9 @@ body {
 .todo-card.completed .task-desc {
   opacity: 0.6;
 }
-
-/* Status successful */
 .todo-card.completed .status {
   background: rgba(22, 163, 74, 0.12);
   color: var(--success);
-}
-
-/* Priority when done */
-.todo-card.completed .priority-badge {
-  opacity: 0.6;
-}
-
-.todo-card.completed .tag {
-  opacity: 0.7;
 }
 
 /* TAGS */
@@ -192,7 +175,6 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.05);
   color: #374151;
 }
-
 .tag:hover {
   background: #e0e7ff;
 }
@@ -218,8 +200,6 @@ body {
 .toggle-container input {
   position: absolute;
   opacity: 0;
-  width: 1px;
-  height: 1px;
 }
 
 .toggle-slider {
@@ -252,11 +232,6 @@ body {
   transform: translateX(18px);
 }
 
-.toggle-container input:focus + .toggle-slider {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
 /* BUTTONS */
 button {
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -267,7 +242,6 @@ button {
   cursor: pointer;
   transition: all 0.2s ease;
   font-size: 0.85rem;
-  backdrop-filter: blur(6px);
 }
 
 button:hover {
@@ -280,62 +254,48 @@ button:focus {
   outline-offset: 2px;
 }
 
-.edit:hover {
-  background: rgb(211, 211, 211);
-}
-
 .delete:hover {
   background: rgba(239, 68, 68, 0.08);
-  border-color: rgba(239, 68, 68, 0.2);
   color: var(--danger);
 }
 
-/*MOBILE RESPONSIVENESS */
+/* MOBILE */
+@media (max-width: 768px) {
+  .container {
+    align-items: center;
+  }
+}
 
 @media (max-width: 480px) {
-  body {
+  .container {
     padding: 12px;
-    align-items: flex-start;
   }
 
   .todo-card {
     width: 100%;
-    max-width: 100%;
+    max-width: 440px;
     padding: 16px;
     border-radius: 14px;
   }
 
-  .card-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  /* meta section */
-  .card-meta {
+  .card-header,
+  .card-meta,
+  .card-actions {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
   }
 
-  /* Make actions vertical */
-  .card-actions {
+  button {
+    width: 100%;
+  }
+  .button-group {
+    width: 100%;
+    display: flex;
     flex-direction: column;
-    align-items: stretch;
+    gap: 8px;
   }
 
-  /* Buttons full width*/
-  .card-actions button {
-    width: 100%;
-  }
-
-  /* Toggle full width */
-  .toggle-container {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  /* Prevent text overflow */
   .task-title {
     font-size: 1.05rem;
   }
@@ -343,7 +303,4 @@ button:focus {
   .task-desc {
     font-size: 0.85rem;
   }
-}
- {
-  box-sizing: border-box;
 }
