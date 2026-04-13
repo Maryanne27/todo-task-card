@@ -279,7 +279,6 @@ button:focus {
   }
 
   .card-header,
-  .card-meta,
   .card-actions {
     flex-direction: column;
     align-items: flex-start;
